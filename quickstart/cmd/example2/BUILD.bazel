@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "example2_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/inobu/practice-bazel/quickstart/cmd/example2",
+    visibility = ["//visibility:private"],
+    deps = ["@org_uber_go_zap//:zap"],
+)
+
+go_binary(
+    name = "example2",
+    embed = [":example2_lib"],
+    visibility = ["//visibility:public"],
+)
